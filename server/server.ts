@@ -4,6 +4,8 @@ import { authRouter } from './routers/authRouter'
 import chalk from 'chalk'
 // import environment variables from .env file
 import 'dotenv/config'
+import { expressjwt } from 'express-jwt'
+import { connectionRouter } from './routers/connectionRouter'
 
 // instantiate app
 const app = express()
@@ -20,7 +22,17 @@ app.get('/', (req, res, next) => {
   res.send('Welcome to Social CRM!')
 })
 
-// routing
+// protected routes
+app.use(
+  '/api',
+  expressjwt({
+    secret: process.env.JWT_SECRET as string,
+    algorithms: ['HS256'],
+  })
+)
+
+// routes
+app.use('/api/connection', connectionRouter)
 
 // error handler
 app.use((err: any, req: any, res: any, next: any) => {
