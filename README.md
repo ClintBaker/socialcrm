@@ -13,6 +13,15 @@ This is an app developed to keep track of all of your relationships. Relationshi
 - Auth occurs through the authRouter.ts
   - Sign up for an account and sign in
 
+#### Database
+
+- We're using a local SQLite database
+
+SCHEMA
+
+1. User
+2. Connections
+
 ## How to use
 
 ### Development
@@ -22,13 +31,33 @@ npm install
 npm run dev
 ```
 
+Make sure your .env file contains the following:
+
+```
+ENV="dev"
+DATABASE_URL="file:./dev.db"
+```
+
 ### Production
 
 Deploy to Render. Make sure to build first.
 
+#### Prod ENV Variables
+
+```
+DATABASE_URL=[production db url]
+```
+
 ### Dependencies
 
-- ts-node: in order to run typescript files on server
+#### Dev
+
+- ts-node: in order to run typescript files
+- typescript: for development in ts
+- prisma: interact with database (ORM)
+
+#### Prod
+
 - express: to handle server routing
 - morgan: for logging
 - chalk: command line styling
