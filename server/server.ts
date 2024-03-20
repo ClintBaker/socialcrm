@@ -33,7 +33,7 @@ app.listen(PORT, () => {
   console.log(chalk.magenta(`Welcome to Social CRM!`))
   console.log(chalk.cyan(`App is listening on port ${PORT}.`))
   // add url if in development
-  if (process.env.ENV === 'dev') {
+  if (process.env.NODE_ENV === 'dev') {
     console.log(
       chalk.cyan('App available at ') + chalk.blue(`http://localhost:${PORT}`)
     )

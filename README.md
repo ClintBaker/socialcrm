@@ -34,8 +34,9 @@ npm run dev
 Make sure your .env file contains the following:
 
 ```
-ENV="dev"
+NODE_ENV="dev"
 DATABASE_URL="file:./dev.db"
+JWT_SECRET="jwt secret"
 ```
 
 ### Production
@@ -46,6 +47,7 @@ Deploy to Render. Make sure to build first.
 
 ```
 DATABASE_URL=[production db url]
+JWT_SECRET=[production secret]
 ```
 
 ### Dependencies
@@ -62,3 +64,6 @@ DATABASE_URL=[production db url]
 - morgan: for logging
 - chalk: command line styling
 - dotenv: import env variables
+- brcypt: hashing passwords
+- express-jwt: middleware for web tokens
+- jsonwebtoken: generate tokens
