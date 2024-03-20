@@ -24,7 +24,7 @@ app.get('/', (req, res, next) => {
 
 // error handler
 app.use((err: any, req: any, res: any, next: any) => {
-  console.log(err)
+  res.send({ error: err.message, message: 'error' })
 })
 
 // start server

@@ -34,8 +34,14 @@ export const signup: RequestHandler = async (req, res, next) => {
       user: { email: newUser.email, name: newUser.name },
       token,
     })
-  } catch (e) {
-    res.status(500)
-    return next(new Error('Unable to create user'))
+  } catch (e: any) {
+    // if the issue is not a unique email
+    if (e.code === 'P2002') {
+      res.status(400)
+      return next(new Error('Email must be unique'))
+    } else {
+      res.status(500)
+      return next(new Error('Unable to create user'))
+    }
   }
 }
