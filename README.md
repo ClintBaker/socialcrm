@@ -50,6 +50,52 @@ DATABASE_URL=[production db url]
 JWT_SECRET=[production secret]
 ```
 
+### Typescript server routes
+
+#### CONNECTION
+
+```
+GET /api/connection
+GET /api/connection/:connectionId
+POST /api/connection
+PUT /api/connection/:connectionId
+DELETE /api/connection/:connectionId
+```
+
+##### GET ALL CONNECTIONS
+
+`GET /api/connection`
+
+- bearer token for auth
+
+##### GET ONE CONNECTION
+
+`GET /api/connection/:connectionId`
+
+- bearer token for auth
+
+##### CREATE CONNECTION
+
+`POST /api/connection`
+
+- bearer token for auth
+- req.body contains fields
+- fields include:
+  - name (required), company, position, notes, phone, email, location, relationship, tags, lastContact, priority, birthday
+
+##### EDIT CONNECTION
+
+`PUT /api/connection/:connectionId`
+
+- bearer token for auth
+- req.body contains fields to be updated
+
+##### DELETE CONNECTION
+
+`DELETE /api/connection/:connectionId`
+
+- bearer token for auth
+
 ### Dependencies
 
 #### Dev
@@ -81,9 +127,3 @@ JWT_SECRET=[production secret]
               - Show user's connections
               - Create interface to add / edit / delete connections
               - Create individual connection page or modal
-
-2.  Build out Starter functionality
-
-        - Starter routes
-        - Starter handlers
-        - Starter testing
