@@ -2,6 +2,7 @@ import prisma from '../modules/db'
 import type { RequestHandler } from 'express'
 
 export const getStarters: RequestHandler = async (req: any, res, next) => {
+  console.log(req.params.connectionId)
   try {
     // validate the user owns the connection
     const connection = await prisma.connection.findUnique({
@@ -56,5 +57,37 @@ export const createStarter: RequestHandler = async (req: any, res, next) => {
   } catch (e) {
     res.status(500)
     return next(new Error('unable to create starter'))
+  }
+}
+
+export const editStarter: RequestHandler = async (req: any, res, next) => {
+  try {
+    // validate the user owns the connection
+    const connection = await prisma.connection.findUnique({
+      where: {
+        id: Number(req.params.connectionId),
+        userId: req.auth.id,
+      },
+    })
+    // if we can't find the connection, either there is no connection or the user doesn't own it
+    if (!connection) {
+      res.status(400)
+      return next(new Error('unauthorized, or connection does not exist'))
+    }
+    // edit starter
+    const editedStarter = await prisma.starter.update({
+      where: {
+        id: Number(req.params.starterId),
+        connectionId: Number(req.params.connectionId),
+      },
+      data: {
+        ...req.body,
+      },
+    })
+
+    res.status(200).send({ starter: editedStarter })
+  } catch (e) {
+    res.status(500)
+    return next(e)
   }
 }

@@ -1,8 +1,9 @@
 import { Router } from 'express'
-import { createStarter, getStarters } from '../handlers/starter'
+import { createStarter, editStarter, getStarters } from '../handlers/starter'
 
-export const starterRouter = Router()
+export const starterRouter = Router({ mergeParams: true })
 
-starterRouter.get('/:connectionId/starters', getStarters)
-starterRouter.post('/:connectionId', createStarter)
+starterRouter.get('/', getStarters)
+starterRouter.post('/', createStarter)
+starterRouter.put('/:starterId', editStarter)
 // starterRouter.get('/:connectionId/:starterId')

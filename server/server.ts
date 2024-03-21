@@ -35,7 +35,7 @@ app.use(
 
 // routes
 app.use('/api/connection', connectionRouter)
-app.use('/api/connection', starterRouter)
+app.use('/api/connection/:connectionId/starters', starterRouter)
 
 // error handler
 app.use((err: any, req: any, res: any, next: any) => {
