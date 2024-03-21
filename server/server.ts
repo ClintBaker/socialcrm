@@ -7,6 +7,7 @@ import 'dotenv/config'
 
 import { connectionRouter } from './routers/connectionRouter'
 import { authRouter } from './routers/authRouter'
+import { starterRouter } from './routers/starterRouter'
 
 // instantiate app
 const app = express()
@@ -34,6 +35,7 @@ app.use(
 
 // routes
 app.use('/api/connection', connectionRouter)
+app.use('/api/connection', starterRouter)
 
 // error handler
 app.use((err: any, req: any, res: any, next: any) => {

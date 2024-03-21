@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import { login, signup } from '../modules/auth'
 import {
   createConnection,
   deleteConnection,
