@@ -1,8 +1,8 @@
 import { Router } from 'express'
 import { login, signup } from '../modules/auth'
+import { createConnection, getConnections } from '../handlers/connection'
 
 export const connectionRouter = Router()
 
-connectionRouter.get('/', (req, res, next) => {
-  res.status(200).send({ message: 'You are authenticated' })
-})
+connectionRouter.get('/', getConnections)
+connectionRouter.post('/', createConnection)

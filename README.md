@@ -70,6 +70,5 @@ JWT_SECRET=[production secret]
 
 ## Todo
 
-1. Define connection schema based on spreadsheet
-2. Build out routes and handlers for connections
-3. Test buildling out connections (make sure it's locked down by user)
+1. Build out routes and handlers for connections
+2. Test buildling out connections (make sure it's locked down by user)

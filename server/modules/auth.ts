@@ -27,11 +27,11 @@ export const signup: RequestHandler = async (req, res, next) => {
       },
     })
     // create token without password
-    const token = createJWT({ email: newUser.email })
+    const token = createJWT({ email: newUser.email, id: newUser.id })
 
     res.status(201).send({
       message: 'user created',
-      user: { email: newUser.email, name: newUser.name },
+      user: { email: newUser.email, name: newUser.name, id: newUser.id },
       token,
     })
   } catch (e: any) {
@@ -76,11 +76,11 @@ export const login: RequestHandler = async (req, res, next) => {
       return next(new Error('Username or password incorrect'))
     }
     // get a token
-    const token = createJWT({ email: user.email })
+    const token = createJWT({ email: user.email, id: user.id })
     // return user & token
     res.status(200).send({
       message: 'successfully signed in',
-      user: { email: user.email, name: user.name },
+      user: { email: user.email, name: user.name, id: user.id },
       token,
     })
   } catch (e) {
