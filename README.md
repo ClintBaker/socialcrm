@@ -20,7 +20,8 @@ This is an app developed to keep track of all of your relationships. Relationshi
 SCHEMA
 
 1. User
-2. Connections
+2. Connection
+3. Starter
 
 ## How to use
 
@@ -50,7 +51,7 @@ DATABASE_URL=[production db url]
 JWT_SECRET=[production secret]
 ```
 
-### Typescript server routes
+### SERVER ROUTES
 
 #### CONNECTION
 
@@ -93,6 +94,43 @@ DELETE /api/connection/:connectionId
 ##### DELETE CONNECTION
 
 `DELETE /api/connection/:connectionId`
+
+- bearer token for auth
+
+#### STARTER
+
+```
+GET /api/connection/:connectionId/starters
+POST /api/connection/:connectionId/starters
+PUT /api/connection/:connectionId/starters/:starterId
+DELETE /api/connection/:connectionId/starters/:starterId
+```
+
+##### GET ALL STARTERS
+
+`GET /api/connection/:connectionId/starters`
+
+- bearer token for auth
+- :connectionId for the connection with which you want to grab related starters
+
+##### CREATE STARTER
+
+`POST /api/connection/:connectionId/starters`
+
+- bearer token for auth
+- req.body contains fields
+- fields include: title (required), description
+
+##### EDIT STARTER
+
+`PUT /api/connection/:connectionId/starters/:starterId`
+
+- bearer token for auth
+- req.body contains fields to be updated
+
+##### DELETE STARTER
+
+`PUT /api/connection/:connectionId/starters/:starterId`
 
 - bearer token for auth
 
