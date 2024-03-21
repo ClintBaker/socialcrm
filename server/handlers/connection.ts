@@ -53,3 +53,20 @@ export const editConnection: RequestHandler = async (req: any, res, next) => {
     next(new Error('Unable to edit connection'))
   }
 }
+
+export const deleteConnection: RequestHandler = async (req: any, res, next) => {
+  try {
+    // delete connection with correct id and userId
+    const deletedConnection = await prisma.connection.delete({
+      where: {
+        id: Number(req.params.connectionId),
+        userId: req.auth.id,
+      },
+    })
+    res.status(200).send({ connection: deletedConnection })
+  } catch (e) {
+    console.log(e)
+    res.status(500)
+    next(new Error('unable to delete connection'))
+  }
+}
