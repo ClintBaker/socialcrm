@@ -67,3 +67,9 @@ JWT_SECRET=[production secret]
 - brcypt: hashing passwords
 - express-jwt: middleware for web tokens
 - jsonwebtoken: generate tokens
+
+## Todo
+
+1. Define connection schema based on spreadsheet
+2. Build out routes and handlers for connections
+3. Test buildling out connections (make sure it's locked down by user)

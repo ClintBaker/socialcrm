@@ -1,11 +1,12 @@
 import express from 'express'
 import morgan from 'morgan'
-import { authRouter } from './routers/authRouter'
 import chalk from 'chalk'
+import { expressjwt } from 'express-jwt'
 // import environment variables from .env file
 import 'dotenv/config'
-import { expressjwt } from 'express-jwt'
+
 import { connectionRouter } from './routers/connectionRouter'
+import { authRouter } from './routers/authRouter'
 
 // instantiate app
 const app = express()
