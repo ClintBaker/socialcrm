@@ -81,3 +81,9 @@ JWT_SECRET=[production secret]
               - Show user's connections
               - Create interface to add / edit / delete connections
               - Create individual connection page or modal
+
+2.  Build out Starter functionality
+
+        - Starter routes
+        - Starter handlers
+        - Starter testing
