@@ -21,9 +21,28 @@ model User {
 model Connection {
   id        Int     @id @default(autoincrement())
   name     String
-  notes   String?
-  published Boolean @default(false)
+  company String?
+  position String?
+  starters Starter[]
+  notes String?
+  phone String?
+  email String?
+  location String?
+  relationship String?
+  tags String?
+  lastContact DateTime?
+  priority String?
+  dateCreated DateTime? @default(now())
+  birthday DateTime?
   user    User    @relation(fields: [userId], references: [id])
   userId  Int
+}
+
+model Starter {
+  id  Int @id @default(autoincrement())
+  title String?
+  description String?
+  connection Connection @relation(fields: [connectionId], references: [id])
+  connectionId Int
 }
 
