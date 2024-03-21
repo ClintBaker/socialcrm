@@ -70,5 +70,14 @@ JWT_SECRET=[production secret]
 
 ## Todo
 
-1. Build out routes and handlers for connections
-2. Test buildling out connections (make sure it's locked down by user)
+1.  Build out front end interface
+
+        - Install TailwindCSS
+        - Install routing
+        - Install context
+        - Build out landing page
+        - Build login / signup page
+        - Build user dashboard
+              - Show user's connections
+              - Create interface to add / edit / delete connections
+              - Create individual connection page or modal
