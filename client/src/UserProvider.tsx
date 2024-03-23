@@ -38,7 +38,8 @@ export default function UserProvider(props: any) {
   })
   //   functions
   async function login(email: string, password: string) {
-    const res = await axios.get('/api/connection')
+    // @ts-ignore
+    const res = await axios.post('/auth/login', { email, password })
     console.log(res)
   }
 
