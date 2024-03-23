@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import Button from '../utility/Button'
 
 export default function Landing() {
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <div className="container flex flex-col justify-center items-center md:p-16 p-4 text-gray-800 max-w-4xl text-center">
+      <div className="container flex flex-col justify-center items-center md:p-16 p-4 text-gray-900 max-w-4xl text-center">
         <h2 className="text-4xl font-semibold ">
           Use Data to Cultivate More Meaningful{' '}
           <span className="custom-underline">Relationships</span>
@@ -13,9 +14,10 @@ export default function Landing() {
           help of data and AI. It's easy to be there for the people who matter
           most with REL-M, the social relationship manager.
         </p>
-        <Button>Supercharge your relationships</Button>
+        <Link to={'/auth'}>
+          <Button>Supercharge your relationships</Button>
+        </Link>
       </div>
-      <div>PEOPLE FACES</div>
     </div>
   )
 }
