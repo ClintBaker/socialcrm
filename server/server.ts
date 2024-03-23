@@ -39,6 +39,10 @@ app.use('/api/connection/:connectionId/starters', starterRouter)
 
 // error handler
 app.use((err: any, req: any, res: any, next: any) => {
+  // handle status better
+  if (res.statusCode === 200) {
+    res.status(500)
+  }
   res.send({ error: err.message, message: 'error' })
 })
 

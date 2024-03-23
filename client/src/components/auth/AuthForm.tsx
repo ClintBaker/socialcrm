@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import ButtonSmall from '../utility/ButtonSmall'
+import { UserContext } from '../../UserProvider'
 
 export default function AuthForm() {
   const [formToggle, setFormToggle] = useState('login')
@@ -8,6 +9,8 @@ export default function AuthForm() {
     password: '',
     confirmPassword: '',
   })
+  const { login } = useContext(UserContext)
+
   function handleFormToggle() {
     setFormToggle((prevFormToggle) => {
       if (prevFormToggle === 'login') return 'signup'
@@ -34,6 +37,7 @@ export default function AuthForm() {
       alert('signing up with data')
     } else {
       // send login information
+      login(formData.email, formData.password)
       alert('logging in with data')
     }
   }

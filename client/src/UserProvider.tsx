@@ -8,6 +8,7 @@ const initState = {
   token: localStorage.getItem('token') || '',
   err: '',
   setUserState: () => {},
+  login: () => {},
 }
 
 interface UserContextType {
@@ -15,6 +16,7 @@ interface UserContextType {
   token: string
   err: string
   setUserState: Function
+  login: Function
 }
 
 export const UserContext = React.createContext<UserContextType>(initState)
@@ -35,6 +37,10 @@ export default function UserProvider(props: any) {
     err: initState.err,
   })
   //   functions
+  async function login(email: string, password: string) {
+    const res = await axios.get('/api/connection')
+    console.log(res)
+  }
 
   return (
     <UserContext.Provider
@@ -43,6 +49,7 @@ export default function UserProvider(props: any) {
         token: userState.token,
         err: userState.err,
         setUserState,
+        login,
       }}
     >
       {props.children}

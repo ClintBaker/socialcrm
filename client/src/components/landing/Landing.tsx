@@ -14,7 +14,7 @@ export default function Landing() {
           help of data and AI. It's easy to be there for the people who matter
           most with REL-M, the social relationship manager.
         </p>
-        <Link to={'/auth'}>
+        <Link to={'/login'}>
           <Button>Supercharge your relationships</Button>
         </Link>
       </div>

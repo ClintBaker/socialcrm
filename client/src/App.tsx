@@ -13,7 +13,7 @@ function App() {
         <ScrollToTop>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/auth" element={<Auth />} />
+            <Route path="/login" element={<Auth />} />
 
             {/* 404 */}
             <Route path="*" element={<Navigate to="/" />} />
