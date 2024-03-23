@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Nav />
-      <main className="bg-white h-screen">
+      <main className="bg-white min-h-screen text-gray-900 my-16">
         <ScrollToTop>
           <Routes>
             <Route path="/" element={<Landing />} />

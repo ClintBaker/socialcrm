@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function Nav() {
   return (
-    <nav className="bg-white p-4 font-semibold border-b-2 flex  items-center">
+    <nav className="bg-white p-4 font-semibold border-b-2 flex  items-center text-gray-900">
       <Link to="/">
         <div className="flex items-center">
           <div className="h-12 w-12 rounded-xl overflow-hidden mr-2">
@@ -12,7 +12,7 @@ export default function Nav() {
               className="object-cover w-full h-full"
             />
           </div>
-          <h1 className="text-3xl text-gray-900">REL-M</h1>
+          <h1 className="text-3xl ">REL-M</h1>
         </div>
       </Link>
     </nav>

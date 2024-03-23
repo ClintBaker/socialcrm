@@ -3,8 +3,8 @@ import Button from '../utility/Button'
 
 export default function Landing() {
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <div className="container flex flex-col justify-center items-center md:p-16 p-4 text-gray-900 max-w-4xl text-center">
+    <div className="flex flex-col justify-center items-center min-h-screen">
+      <div className="container flex flex-col justify-center items-center md:p-16 p-4 max-w-4xl text-center">
         <h2 className="text-4xl font-semibold ">
           Use Data to Cultivate More Meaningful{' '}
           <span className="custom-underline">Relationships</span>
