@@ -3,20 +3,54 @@ import ButtonSmall from '../utility/ButtonSmall'
 
 export default function AuthForm() {
   const [formToggle, setFormToggle] = useState('login')
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+  })
   function handleFormToggle() {
     setFormToggle((prevFormToggle) => {
       if (prevFormToggle === 'login') return 'signup'
       return 'login'
     })
   }
+  function handleFormChange(e: any) {
+    const { value, name } = e.target
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }))
+  }
+
+  function handleSubmit(e: any) {
+    e.preventDefault()
+    // send signup form
+    if (formToggle === 'signup') {
+      // validate passwords match before sending data
+      if (formData.confirmPassword !== formData.password) {
+        alert('Passwords must match')
+        return
+      }
+      alert('signing up with data')
+    } else {
+      // send login information
+      alert('logging in with data')
+    }
+  }
   return (
-    <form className="flex flex-col justify-center items-center">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col justify-center items-center"
+    >
       <div className="flex flex-col">
         <label className="text-sm">Email</label>
         <input
           className="border-2 border-gray-400 rounded-md p-2 w-72"
           placeholder="email"
           type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleFormChange}
         />
       </div>
       <div className="flex flex-col mt-8">
@@ -25,6 +59,9 @@ export default function AuthForm() {
           className="border-2 border-gray-400 rounded-md p-2 w-72"
           placeholder="password"
           type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleFormChange}
         />
       </div>
       {formToggle === 'signup' && (
@@ -34,6 +71,9 @@ export default function AuthForm() {
             className="border-2 border-gray-400 rounded-md p-2 w-72"
             placeholder="confirm password"
             type="password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleFormChange}
           />
         </div>
       )}
