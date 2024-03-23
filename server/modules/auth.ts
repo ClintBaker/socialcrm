@@ -57,32 +57,34 @@ export const login: RequestHandler = async (req, res, next) => {
     // if user doesn't exist throw err
     if (!user) {
       res.status(403)
-      return next(new Error('Username or password incorrect'))
+      return next(new Error('username or password incorrect'))
     }
-    // compare passwords
-    const isMatch = await new Promise((resolve: any, reject: any) => {
-      bcrypt.compare(
-        req.body.password,
-        user.password as string,
-        (err, isMatch) => {
-          if (err) reject(err)
-          resolve(true)
+
+    // compare passwors
+    bcrypt.compare(
+      req.body.password,
+      user.password as string,
+      (err, isMatch) => {
+        if (err) {
+          res.status(403)
+          return next(new Error('username or password incorrect'))
         }
-      )
-    })
-    // if no match
-    if (!isMatch) {
-      res.status(403)
-      return next(new Error('Username or password incorrect'))
-    }
-    // get a token
-    const token = createJWT({ email: user.email, id: user.id })
-    // return user & token
-    res.status(200).send({
-      message: 'successfully signed in',
-      user: { email: user.email, name: user.name, id: user.id },
-      token,
-    })
+
+        if (!isMatch) {
+          res.status(403)
+          return next(new Error('username or password incorrect'))
+        }
+
+        // get a token
+        const token = createJWT({ email: user.email, id: user.id })
+        // return user & token
+        res.status(200).send({
+          message: 'successfully signed in',
+          user: { email: user.email, name: user.name, id: user.id },
+          token,
+        })
+      }
+    )
   } catch (e) {
     res.status(500)
     return next(e)

@@ -38,7 +38,6 @@ export default function AuthForm() {
     } else {
       // send login information
       login(formData.email, formData.password)
-      alert('logging in with data')
     }
   }
   return (
