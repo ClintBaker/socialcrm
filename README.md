@@ -156,7 +156,6 @@ DELETE /api/connection/:connectionId/starters/:starterId
 
 1.  Build out front end interface
 
-        - Install routing
         - Install context
         - Build out landing page
         - Build login / signup page
