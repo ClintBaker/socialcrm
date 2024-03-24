@@ -9,7 +9,7 @@ export default function AuthForm() {
     password: '',
     confirmPassword: '',
   })
-  const { login } = useContext(UserContext)
+  const { login, signup } = useContext(UserContext)
 
   function handleFormToggle() {
     setFormToggle((prevFormToggle) => {
@@ -34,7 +34,7 @@ export default function AuthForm() {
         alert('Passwords must match')
         return
       }
-      alert('signing up with data')
+      signup(formData.email, formData.password)
     } else {
       // send login information
       login(formData.email, formData.password)

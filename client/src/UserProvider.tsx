@@ -9,6 +9,7 @@ const initState = {
   err: '',
   setUserState: () => {},
   login: () => {},
+  signup: () => {},
 }
 
 interface UserContextType {
@@ -17,6 +18,7 @@ interface UserContextType {
   err: string
   setUserState: Function
   login: Function
+  signup: Function
 }
 
 export const UserContext = React.createContext<UserContextType>(initState)
@@ -38,9 +40,43 @@ export default function UserProvider(props: any) {
   })
   //   functions
   async function login(email: string, password: string) {
-    // @ts-ignore
-    const res = await axios.post('/auth/login', { email, password })
-    console.log(res)
+    try {
+      // @ts-ignore
+      const res = await axios.post('/auth/login', { email, password })
+      // set user state
+      setUserState((prevUserState) => ({
+        ...prevUserState,
+        token: res.data.token,
+        user: res.data.user,
+      }))
+      //   store user and token in local storage
+
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('user', JSON.stringify(res.data.user))
+    } catch (e) {
+      console.log('e')
+      alert('Unable to log in')
+    }
+  }
+
+  async function signup(email: string, password: string) {
+    try {
+      // @ts-ignore
+      const res = await axios.post('/auth/signup', { email, password })
+      // set user state
+      setUserState((prevUserState) => ({
+        ...prevUserState,
+        token: res.data.token,
+        user: res.data.user,
+      }))
+      //   store user and token in local storage
+
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('user', JSON.stringify(res.data.user))
+    } catch (e) {
+      console.log('e')
+      alert('Unable to sign up')
+    }
   }
 
   return (
@@ -51,6 +87,7 @@ export default function UserProvider(props: any) {
         err: userState.err,
         setUserState,
         login,
+        signup,
       }}
     >
       {props.children}
