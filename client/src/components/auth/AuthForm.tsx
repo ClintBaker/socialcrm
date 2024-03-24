@@ -36,6 +36,7 @@ export default function AuthForm() {
       }
       signup(formData.email, formData.password)
     } else {
+      console.log('logging in')
       // send login information
       login(formData.email, formData.password)
     }

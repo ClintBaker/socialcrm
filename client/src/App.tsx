@@ -13,7 +13,7 @@ function App() {
   const { token } = useContext(UserContext)
   return (
     <>
-      <Nav />
+      <Nav token={token} />
       <main className="bg-white min-h-screen text-gray-900 my-16">
         <ScrollToTop>
           <Routes>
@@ -22,7 +22,10 @@ function App() {
               path="/"
               element={token ? <Navigate to="/dashboard" /> : <Landing />}
             />
-            <Route path="/login" element={<Auth />} />
+            <Route
+              path="/login"
+              element={token ? <Navigate to="/dashboard" /> : <Auth />}
+            />
 
             {/* Protected routes */}
             <Route

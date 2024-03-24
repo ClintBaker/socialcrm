@@ -10,6 +10,7 @@ const initState = {
   setUserState: () => {},
   login: () => {},
   signup: () => {},
+  logout: () => {},
 }
 
 interface UserContextType {
@@ -19,6 +20,7 @@ interface UserContextType {
   setUserState: Function
   login: Function
   signup: Function
+  logout: Function
 }
 
 export const UserContext = React.createContext<UserContextType>(initState)
@@ -44,6 +46,8 @@ export default function UserProvider(props: any) {
       // @ts-ignore
       const res = await axios.post('/auth/login', { email, password })
       // set user state
+      console.log('setting user state')
+      console.log(res.data.token)
       setUserState((prevUserState) => ({
         ...prevUserState,
         token: res.data.token,
@@ -79,6 +83,18 @@ export default function UserProvider(props: any) {
     }
   }
 
+  async function logout() {
+    // reset user state
+    setUserState({
+      user: {},
+      token: '',
+      err: '',
+    })
+    // reset localStorage
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -88,6 +104,7 @@ export default function UserProvider(props: any) {
         setUserState,
         login,
         signup,
+        logout,
       }}
     >
       {props.children}

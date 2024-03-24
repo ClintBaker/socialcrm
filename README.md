@@ -156,8 +156,8 @@ DELETE /api/connection/:connectionId/starters/:starterId
 
 1.  Build out front end interface
 
-        - Build login / signup page
         - Build user dashboard
               - Show user's connections
               - Create interface to add / edit / delete connections
               - Create individual connection page or modal
+        - Add messaging / error / success
