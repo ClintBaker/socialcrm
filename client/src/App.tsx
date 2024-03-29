@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Nav token={token} />
-      <main className="bg-white min-h-screen text-gray-900 my-16">
+      <main className="bg-white min-h-screen text-gray-900">
         <ScrollToTop>
           <Routes>
             {/* Primary routes */}
