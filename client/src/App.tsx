@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Landing from './components/landing/Landing'
-import Nav from './components/utility/Nav'
+import Nav from './components/nav/Nav'
 import Footer from './components/utility/Footer'
 import Auth from './components/auth/Auth'
 import ScrollToTop from './components/utility/ScrollToTop'
@@ -10,10 +10,10 @@ import { UserContext } from './UserProvider'
 import ProtectedRoute from './components/auth/ProtectedRoute'
 
 function App() {
-  const { token } = useContext(UserContext)
+  const { token, user } = useContext(UserContext)
   return (
     <>
-      <Nav token={token} />
+      <Nav />
       <main className="bg-white min-h-screen text-gray-900">
         <ScrollToTop>
           <Routes>
