@@ -12,3 +12,16 @@
   background-size: 110% 0.25em;
   background-position: 0% 110%;
 }
+
+/* connections container custom tailwind apply */
+.connections-container div {
+  @apply m-2;
+  @apply bg-yellow-200;
+  @apply flex-shrink-0;
+  @apply w-48;
+  @apply h-16;
+  @apply overflow-auto;
+  @apply flex;
+  @apply justify-center;
+  @apply items-center;
+}
